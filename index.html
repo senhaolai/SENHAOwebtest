@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Django App</title>
+</head>
+<body>
+    <h1>Dynamic Content from Django</h1>
+    <div id="content">Loading...</div>
+
+    <script>
+        // 替换为你的本地 Django 服务器地址
+        const apiURL = 'http://127.0.0.1:8000/api/example/';
+
+        fetch(apiURL)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('content').textContent = data.message;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                document.getElementById('content').textContent = 'Failed to load data';
+            });
+    </script>
+</body>
+</html>
